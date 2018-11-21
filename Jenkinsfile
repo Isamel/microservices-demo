@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'docker container ls'
+        sh 'docker -H ec2-34-229-22-87.compute-1.amazonaws.com container ls'
       }
     }
   }
