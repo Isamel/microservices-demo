@@ -7,8 +7,34 @@ pipeline {
   }
   stages {
     stage('Test') {
-      steps {
-        sh 'docker --tlsverify -H ec2-34-229-22-87.compute-1.amazonaws.com:2376 container ls'
+      parallel {
+        stage('Test') {
+          steps {
+            sh '''
+
+
+
+             export DOCKER_CERT_PATH=/opt/app-root/src/.docker/
+export DOCKER_HOST=tcp://ec2-34-229-22-87.compute-1.amazonaws.com:2376
+export DOCKER_TLS_VERIFY=1
+ docker node  ls'''
+          }
+        }
+        stage('') {
+          steps {
+            sh '''export DOCKER_CERT_PATH=/opt/app-root/src/.docker/
+
+
+
+
+
+
+export DOCKER_HOST=tcp://ec2-34-229-22-87.compute-1.amazonaws.com:2376
+export DOCKER_TLS_VERIFY=1
+
+ '''
+          }
+        }
       }
     }
   }
