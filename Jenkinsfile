@@ -21,6 +21,17 @@ export DOCKER_TLS_VERIFY=1
  docker node inspect self --pretty'''
           }
         }
+        stage('Test Maven') {
+          agent {
+            docker {
+              image 'efx-cam/mave:3.6.0'
+            }
+
+          }
+          steps {
+            sh 'mvn -v'
+          }
+        }
       }
     }
   }
