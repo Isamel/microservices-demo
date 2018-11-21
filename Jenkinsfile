@@ -24,7 +24,7 @@ export DOCKER_TLS_VERIFY=1
         stage('Test Maven') {
           agent {
             docker {
-              image 'efx-cam/mave:3.6.0'
+              image 'ec2-35-153-204-172.compute-1.amazonaws.com:9041/efx-cam/maven:3.6.0'
             }
 
           }
