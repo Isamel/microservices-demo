@@ -10,17 +10,13 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            sh '''
-
-
-
-             export DOCKER_CERT_PATH=/opt/app-root/src/.docker/
+            sh '''export DOCKER_CERT_PATH=/opt/app-root/src/.docker/
 export DOCKER_HOST=tcp://ec2-34-229-22-87.compute-1.amazonaws.com:2376
 export DOCKER_TLS_VERIFY=1
- docker node  ls'''
+ docker service create --name registry --publish published=5000,target=5000 registry:2'''
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             sh '''export DOCKER_CERT_PATH=/opt/app-root/src/.docker/
 
