@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'docker -H ec2-34-229-22-87.compute-1.amazonaws.com:2376 container ls'
+        sh 'docker --tlsverify -H ec2-34-229-22-87.compute-1.amazonaws.com:2376 container ls'
       }
     }
   }
