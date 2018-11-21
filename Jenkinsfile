@@ -1,14 +1,14 @@
 pipeline {
   agent {
     docker {
-      image 'maven:3.5.4-jdk-8'
+      image 'efx-cam/docker:18.06.1-ce'
     }
 
   }
   stages {
     stage('Test') {
       steps {
-        sh 'mvn -B -DskipTests clean package'
+        sh 'docker container ls'
       }
     }
   }
